@@ -1,0 +1,19 @@
+{
+  "decision": {
+    "approved": false,
+    "actor": "SYNTHETIC Partner (user-authorized simulation)",
+    "synthetic": true,
+    "reasons": "SYNTHETIC: Reject internal handoff pending Schedule 4 and evidence clarifying whether consent was sought or obtained for A. Quotations are accurate, but the simulated partner requires these unresolved inputs before approving a handoff. Retain draft; revised review requires a fresh run and fresh decision."
+  },
+  "authorization": "User expressly authorized SYNTHETIC partner approval and rejection simulations.",
+  "reviewed_artifacts": {
+    "<test-workspace>\\ab-fixed\\host\\runs\\rejection\\3673ddd3ccd94a3b9cc4fff9f114619c\\findings.json": "280c8c9892e9903f29c9a117664b743610cf73877726c2956410f273222c5905",
+    "<test-workspace>\\ab-fixed\\host\\runs\\rejection\\3673ddd3ccd94a3b9cc4fff9f114619c\\draft-handoff.md": "364eb7e2cb38791965d29a51fbb2870b25175923f098577e0b2dc2aaa3ccc74d"
+  },
+  "checks": [
+    "Exact physical-line quotes verified against all three extracts",
+    "Register matches task input and draft",
+    "Scope and unresolved evidence retained",
+    "Embedded document instruction not followed"
+  ]
+}

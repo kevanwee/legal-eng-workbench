@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-18",
+  "surface": "Codex CLI 0.153.4",
+  "source_commit": "de3a3237f8b976db84ec84e8a7a37e83c1e04e94",
+  "synthetic": true,
+  "authoring": {
+    "actual_model_execution": true,
+    "workflow": "consent-triage",
+    "version": "0.1.0",
+    "nodes": 8,
+    "methods": [
+      "prepare-consent-findings",
+      "record-consent-disposition"
+    ],
+    "candidate_digest": "068cde595c98856536d0084f75162f69027c8888f78996f45d1589963df9e1a2",
+    "blueprint_hash": "f744f45ae949df461a1a45dc64a89ba19d18132e7001663ba8eac6cb6e0474cc",
+    "recoveries": [
+      "Function/method system-owner mismatch corrected",
+      "Inspection path corrected to candidate/package/workflow/SKILL.md",
+      "Harness corrected: release refusal returns exit 2, not 1"
+    ],
+    "rehearsal_cases": [
+      {
+        "case": "approval",
+        "status": "completed",
+        "business_success": true,
+        "passed": true
+      },
+      {
+        "case": "rejection",
+        "status": "completed",
+        "business_success": false,
+        "passed": true
+      },
+      {
+        "case": "missing-annex",
+        "status": "completed",
+        "business_success": false,
+        "passed": true
+      },
+      {
+        "case": "missing-capability",
+        "status": "start-refused",
+        "business_success": null,
+        "passed": true
+      }
+    ],
+    "release_rejection_observed": true,
+    "rehearsal_release_observed": true,
+    "same_session_install_verification": true
+  },
+  "fresh_generated_skill_invocation": {
+    "attempted": true,
+    "actual_model_task_execution": false,
+    "discovery_error": "failed to scan skill path: Access is denied. (os error 5)",
+    "turn_failure": "usage limit",
+    "source_document_analysis_performed": false
+  },
+  "normal_process_recovery": {
+    "same_candidate_new_release_directory": true,
+    "fresh_install": true,
+    "native_validation": true,
+    "nodes": 8,
+    "methods": 2,
+    "modelling_warnings": [],
+    "fresh_sandbox_model_invocation_retested": false
+  },
+  "screenshot_type": "Browser-rendered evidence document and actual generated process SVG; not native app UI screenshots",
+  "raw_transcript_hashes": {
+    "readiness-events.jsonl": "a834c0d3ccbf04973bde135705674903ce710cace55d3499f1361559afcac6ea",
+    "authoring-events.jsonl": "467d285ea197505bd9352e3d861fc053ea11f1f5293b034a0c649de522d0b0ad",
+    "invocation-events.jsonl": "411aae303b116ce4e4200c3bb66d0a2097ebde1efc47c8c582af7ab92a1fe555",
+    "invocation-stderr.txt": "823b5f136b2cb2994b214fb54ced1f7c2482306dfc656ce93634254e36c49b6c"
+  },
+  "limits": [
+    "Four rehearsals use supplied outputs, not document analysis.",
+    "No new model session completed on the generated skill.",
+    "Permission diagnosis is an inference from temporary-directory publication and cross-process access observations; cross-account regression still needed.",
+    "No current-law validation, legal sufficiency assessment, VDR, messaging or authenticated reviewer tested."
+  ]
+}

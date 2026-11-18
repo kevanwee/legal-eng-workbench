@@ -1,0 +1,1539 @@
+{
+  "synthetic": true,
+  "description": "Native routing with scripted outputs; no actual legal analysis, VDR or legal approval.",
+  "inputs": {
+    "matter_ref": "SYNTHETIC buy-side DD package rehearsal",
+    "data_room_index": "SYNTHETIC VDR index: 1 Corporate (constitution, registers, ACRA profile), 2 Material contracts (top 20 customer and supplier agreements), 3 Employment (contracts, CPF, work pass list), 4 IP and IT (trade marks, software licences, PDPA policies), 5 Property (leases), 6 Litigation (letters of demand), 7 Licences. Folder 8 Board minutes is marked restricted.",
+    "review_scope": "Full legal DD on the target and its one subsidiary; exclude tax and financial DD.",
+    "playbook": "SYNTHETIC DD PLAYBOOK v3: flag change-of-control clauses in any contract above S$500k; flag work-pass holders without valid passes; flag unregistered trade marks in core brands; flag leases expiring within 12 months; flag any threatened litigation above S$100k; flag PDPA policies older than 2021.",
+    "vdr_terms": "SYNTHETIC VDR TERMS: bulk download permitted for the buyer's legal advisers; processing by third-party tools permitted where the adviser's tool is contractually bound to confidentiality and data is deleted on completion; folder 8 may not be downloaded."
+  },
+  "host": {
+    "host": "test",
+    "code_execution": true,
+    "bindings": [
+      {
+        "capability": "legal-ai-review",
+        "kind": "tool",
+        "tool": "synthetic.legal-ai-review",
+        "verified": true
+      },
+      {
+        "capability": "tracker-write",
+        "kind": "tool",
+        "tool": "synthetic.tracker-write",
+        "verified": true
+      },
+      {
+        "capability": "vdr-qa-post",
+        "kind": "tool",
+        "tool": "synthetic.vdr-qa-post",
+        "verified": true
+      }
+    ]
+  },
+  "outputs": {
+    "allocate": [
+      {
+        "review_areas": [
+          "corporate",
+          "contracts",
+          "employment",
+          "ip-it-pdpa",
+          "property-litigation-licences"
+        ],
+        "ai_scope": "SYNTHETIC: folders 1-7 may be processed; folder 8 (restricted board minutes) stays manual."
+      }
+    ],
+    "clear-ai-use": [
+      {
+        "ai_processing_permitted": true,
+        "basis": "SYNTHETIC: VDR terms permit third-party tools under confidentiality; folder 8 excluded; employee data covered by firm's Legal AI DPA."
+      }
+    ],
+    "load-dataroom": [
+      {
+        "ingestion_ref": "SYNTHETIC-INGEST-001",
+        "playbook_version": "v3"
+      }
+    ],
+    "ai-ingest": [
+      {
+        "document_count": 412,
+        "unreadable_count": 3,
+        "index_ref": "SYNTHETIC-INDEX-001"
+      },
+      {
+        "tracker_delta": [
+          "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+        ],
+        "open_items": 1
+      }
+    ],
+    "ai-flag": [
+      {
+        "tracker_ref": "SYNTHETIC-TRACKER-001",
+        "candidate_issues": [
+          {
+            "area": "contracts",
+            "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+            "severity": "high",
+            "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+          },
+          {
+            "area": "employment",
+            "issue": "Two work-pass holders with passes expiring before completion",
+            "severity": "medium",
+            "source_locator": "3/WorkPassList.xlsx rows 4,9"
+          },
+          {
+            "area": "ip-it-pdpa",
+            "issue": "Core brand mark unregistered in Singapore",
+            "severity": "red-flag",
+            "source_locator": "4/TM-schedule.docx row 1"
+          }
+        ]
+      }
+    ],
+    "verify-corporate": [
+      {
+        "verified_issues": [
+          {
+            "area": "contracts",
+            "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+            "severity": "high",
+            "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+          },
+          {
+            "area": "employment",
+            "issue": "Two work-pass holders with passes expiring before completion",
+            "severity": "medium",
+            "source_locator": "3/WorkPassList.xlsx rows 4,9"
+          }
+        ],
+        "red_flag_candidates": [],
+        "corrections_made": 1
+      }
+    ],
+    "verify-ip": [
+      {
+        "verified_issues": [
+          {
+            "area": "ip-it-pdpa",
+            "issue": "Core brand mark unregistered in Singapore",
+            "severity": "red-flag",
+            "source_locator": "4/TM-schedule.docx row 1"
+          }
+        ],
+        "red_flag_candidates": [
+          "Core brand mark unregistered"
+        ],
+        "corrections_made": 0
+      }
+    ],
+    "run-searches": [
+      {
+        "search_findings": [
+          "SYNTHETIC: ACRA profile matches register; no IPOS filing for core mark; no live suits"
+        ],
+        "search_red_flags": []
+      }
+    ],
+    "assess-red-flags": [
+      {
+        "red_flag_found": false,
+        "red_flag_summary": "SYNTHETIC: no red flag; unregistered mark handled by RFI and completion deliverable."
+      }
+    ],
+    "ai-draft-rfis": [
+      {
+        "draft_rfis": [
+          "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+          "SYNTHETIC RFI 1.2: confirm TM filing status"
+        ]
+      }
+    ],
+    "review-rfis": [
+      {
+        "rfi_list": [
+          "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+          "SYNTHETIC RFI 1.2: confirm TM filing status",
+          "SYNTHETIC RFI 1.3: work pass renewals"
+        ],
+        "round_note": "SYNTHETIC: round 1 logged"
+      }
+    ],
+    "approve-rfis": [
+      {
+        "approved": true,
+        "comments": "SYNTHETIC: approved round 1"
+      }
+    ],
+    "release-rfis": [
+      {
+        "qa_reference": "SYNTHETIC-QA-ROUND-1"
+      }
+    ],
+    "await-responses": [
+      {
+        "responses_received": true,
+        "upload_count": 6
+      }
+    ],
+    "ai-ingest-uploads": [
+      {
+        "tracker_delta": [
+          "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+        ],
+        "open_items": 1
+      }
+    ],
+    "verify-updates": [
+      {
+        "further_round_required": false,
+        "stage_summary": "SYNTHETIC: tracker current after round 1; 1 item open for SPA protection."
+      }
+    ],
+    "sign-off": [
+      {
+        "signed_off": true,
+        "reasons": "SYNTHETIC: findings complete for Stage 5."
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "a-no-red-flag-one-round",
+      "outputs": {
+        "allocate": [
+          {
+            "review_areas": [
+              "corporate",
+              "contracts",
+              "employment",
+              "ip-it-pdpa",
+              "property-litigation-licences"
+            ],
+            "ai_scope": "SYNTHETIC: folders 1-7 may be processed; folder 8 (restricted board minutes) stays manual."
+          }
+        ],
+        "clear-ai-use": [
+          {
+            "ai_processing_permitted": true,
+            "basis": "SYNTHETIC: VDR terms permit third-party tools under confidentiality; folder 8 excluded; employee data covered by firm's Legal AI DPA."
+          }
+        ],
+        "load-dataroom": [
+          {
+            "ingestion_ref": "SYNTHETIC-INGEST-001",
+            "playbook_version": "v3"
+          }
+        ],
+        "ai-ingest": [
+          {
+            "document_count": 412,
+            "unreadable_count": 3,
+            "index_ref": "SYNTHETIC-INDEX-001"
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "ai-flag": [
+          {
+            "tracker_ref": "SYNTHETIC-TRACKER-001",
+            "candidate_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              },
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ]
+          }
+        ],
+        "verify-corporate": [
+          {
+            "verified_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              }
+            ],
+            "red_flag_candidates": [],
+            "corrections_made": 1
+          }
+        ],
+        "verify-ip": [
+          {
+            "verified_issues": [
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ],
+            "red_flag_candidates": [
+              "Core brand mark unregistered"
+            ],
+            "corrections_made": 0
+          }
+        ],
+        "run-searches": [
+          {
+            "search_findings": [
+              "SYNTHETIC: ACRA profile matches register; no IPOS filing for core mark; no live suits"
+            ],
+            "search_red_flags": []
+          }
+        ],
+        "assess-red-flags": [
+          {
+            "red_flag_found": false,
+            "red_flag_summary": "SYNTHETIC: no red flag; unregistered mark handled by RFI and completion deliverable."
+          }
+        ],
+        "ai-draft-rfis": [
+          {
+            "draft_rfis": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status"
+            ]
+          }
+        ],
+        "review-rfis": [
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status",
+              "SYNTHETIC RFI 1.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 1 logged"
+          }
+        ],
+        "approve-rfis": [
+          {
+            "approved": true,
+            "comments": "SYNTHETIC: approved round 1"
+          }
+        ],
+        "release-rfis": [
+          {
+            "qa_reference": "SYNTHETIC-QA-ROUND-1"
+          }
+        ],
+        "await-responses": [
+          {
+            "responses_received": true,
+            "upload_count": 6
+          }
+        ],
+        "ai-ingest-uploads": [
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "verify-updates": [
+          {
+            "further_round_required": false,
+            "stage_summary": "SYNTHETIC: tracker current after round 1; 1 item open for SPA protection."
+          }
+        ],
+        "sign-off": [
+          {
+            "signed_off": true,
+            "reasons": "SYNTHETIC: findings complete for Stage 5."
+          }
+        ]
+      },
+      "expected": {
+        "status": "completed",
+        "business_success": true,
+        "outcome": "findings-handed-to-stage-5"
+      }
+    },
+    {
+      "name": "b-red-flag-protections-two-rounds",
+      "outputs": {
+        "allocate": [
+          {
+            "review_areas": [
+              "corporate",
+              "contracts",
+              "employment",
+              "ip-it-pdpa",
+              "property-litigation-licences"
+            ],
+            "ai_scope": "SYNTHETIC: folders 1-7 may be processed; folder 8 (restricted board minutes) stays manual."
+          }
+        ],
+        "clear-ai-use": [
+          {
+            "ai_processing_permitted": true,
+            "basis": "SYNTHETIC: VDR terms permit third-party tools under confidentiality; folder 8 excluded; employee data covered by firm's Legal AI DPA."
+          }
+        ],
+        "load-dataroom": [
+          {
+            "ingestion_ref": "SYNTHETIC-INGEST-001",
+            "playbook_version": "v3"
+          }
+        ],
+        "ai-ingest": [
+          {
+            "document_count": 412,
+            "unreadable_count": 3,
+            "index_ref": "SYNTHETIC-INDEX-001"
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 2.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "ai-flag": [
+          {
+            "tracker_ref": "SYNTHETIC-TRACKER-001",
+            "candidate_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              },
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ]
+          }
+        ],
+        "verify-corporate": [
+          {
+            "verified_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              }
+            ],
+            "red_flag_candidates": [],
+            "corrections_made": 1
+          }
+        ],
+        "verify-ip": [
+          {
+            "verified_issues": [
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ],
+            "red_flag_candidates": [
+              "Core brand mark unregistered"
+            ],
+            "corrections_made": 0
+          }
+        ],
+        "run-searches": [
+          {
+            "search_findings": [
+              "SYNTHETIC: ACRA profile matches register; no IPOS filing for core mark; no live suits"
+            ],
+            "search_red_flags": []
+          }
+        ],
+        "assess-red-flags": [
+          {
+            "red_flag_found": true,
+            "red_flag_summary": "SYNTHETIC: unregistered core mark is a red flag."
+          }
+        ],
+        "obtain-steer": [
+          {
+            "steer": "protections",
+            "steer_notes": "SYNTHETIC: buyer proceeds subject to specific indemnity and pre-completion TM filing."
+          }
+        ],
+        "ai-draft-rfis": [
+          {
+            "draft_rfis": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status"
+            ]
+          },
+          {
+            "draft_rfis": [
+              "SYNTHETIC RFI 2.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 2.2: confirm TM filing status"
+            ]
+          }
+        ],
+        "review-rfis": [
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status",
+              "SYNTHETIC RFI 1.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 1 logged"
+          },
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 2.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 2.2: confirm TM filing status",
+              "SYNTHETIC RFI 2.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 2 logged"
+          }
+        ],
+        "approve-rfis": [
+          {
+            "approved": true,
+            "comments": "SYNTHETIC: approved round 1"
+          },
+          {
+            "approved": true,
+            "comments": "SYNTHETIC: approved round 2"
+          }
+        ],
+        "release-rfis": [
+          {
+            "qa_reference": "SYNTHETIC-QA-ROUND-1"
+          },
+          {
+            "qa_reference": "SYNTHETIC-QA-ROUND-2"
+          }
+        ],
+        "await-responses": [
+          {
+            "responses_received": true,
+            "upload_count": 6
+          },
+          {
+            "responses_received": true,
+            "upload_count": 6
+          }
+        ],
+        "ai-ingest-uploads": [
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 2.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "verify-updates": [
+          {
+            "further_round_required": true,
+            "stage_summary": "SYNTHETIC: after round 1"
+          },
+          {
+            "further_round_required": false,
+            "stage_summary": "SYNTHETIC: after round 2"
+          }
+        ],
+        "sign-off": [
+          {
+            "signed_off": true,
+            "reasons": "SYNTHETIC: findings complete for Stage 5."
+          }
+        ]
+      },
+      "expected": {
+        "status": "completed",
+        "business_success": true,
+        "outcome": "findings-handed-to-stage-5"
+      }
+    },
+    {
+      "name": "c-red-flag-walk-away",
+      "outputs": {
+        "allocate": [
+          {
+            "review_areas": [
+              "corporate",
+              "contracts",
+              "employment",
+              "ip-it-pdpa",
+              "property-litigation-licences"
+            ],
+            "ai_scope": "SYNTHETIC: folders 1-7 may be processed; folder 8 (restricted board minutes) stays manual."
+          }
+        ],
+        "clear-ai-use": [
+          {
+            "ai_processing_permitted": true,
+            "basis": "SYNTHETIC: VDR terms permit third-party tools under confidentiality; folder 8 excluded; employee data covered by firm's Legal AI DPA."
+          }
+        ],
+        "load-dataroom": [
+          {
+            "ingestion_ref": "SYNTHETIC-INGEST-001",
+            "playbook_version": "v3"
+          }
+        ],
+        "ai-ingest": [
+          {
+            "document_count": 412,
+            "unreadable_count": 3,
+            "index_ref": "SYNTHETIC-INDEX-001"
+          }
+        ],
+        "ai-flag": [
+          {
+            "tracker_ref": "SYNTHETIC-TRACKER-001",
+            "candidate_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              },
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ]
+          }
+        ],
+        "verify-corporate": [
+          {
+            "verified_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              }
+            ],
+            "red_flag_candidates": [],
+            "corrections_made": 1
+          }
+        ],
+        "verify-ip": [
+          {
+            "verified_issues": [
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ],
+            "red_flag_candidates": [
+              "Core brand mark unregistered"
+            ],
+            "corrections_made": 0
+          }
+        ],
+        "run-searches": [
+          {
+            "search_findings": [
+              "SYNTHETIC: ACRA profile matches register; no IPOS filing for core mark; no live suits"
+            ],
+            "search_red_flags": []
+          }
+        ],
+        "assess-red-flags": [
+          {
+            "red_flag_found": true,
+            "red_flag_summary": "SYNTHETIC: red flag."
+          }
+        ],
+        "obtain-steer": [
+          {
+            "steer": "walk-away",
+            "steer_notes": "SYNTHETIC: buyer withdraws."
+          }
+        ]
+      },
+      "expected": {
+        "status": "completed",
+        "business_success": false,
+        "outcome": "buyer-withdrew"
+      }
+    },
+    {
+      "name": "d-ai-not-permitted",
+      "outputs": {
+        "allocate": [
+          {
+            "review_areas": [
+              "corporate",
+              "contracts",
+              "employment",
+              "ip-it-pdpa",
+              "property-litigation-licences"
+            ],
+            "ai_scope": "SYNTHETIC: folders 1-7 may be processed; folder 8 (restricted board minutes) stays manual."
+          }
+        ],
+        "clear-ai-use": [
+          {
+            "ai_processing_permitted": false,
+            "basis": "SYNTHETIC: VDR terms prohibit third-party processing."
+          }
+        ]
+      },
+      "expected": {
+        "status": "completed",
+        "business_success": false,
+        "outcome": "manual-review-required"
+      }
+    },
+    {
+      "name": "e-partner-returns-rfis",
+      "outputs": {
+        "allocate": [
+          {
+            "review_areas": [
+              "corporate",
+              "contracts",
+              "employment",
+              "ip-it-pdpa",
+              "property-litigation-licences"
+            ],
+            "ai_scope": "SYNTHETIC: folders 1-7 may be processed; folder 8 (restricted board minutes) stays manual."
+          }
+        ],
+        "clear-ai-use": [
+          {
+            "ai_processing_permitted": true,
+            "basis": "SYNTHETIC: VDR terms permit third-party tools under confidentiality; folder 8 excluded; employee data covered by firm's Legal AI DPA."
+          }
+        ],
+        "load-dataroom": [
+          {
+            "ingestion_ref": "SYNTHETIC-INGEST-001",
+            "playbook_version": "v3"
+          }
+        ],
+        "ai-ingest": [
+          {
+            "document_count": 412,
+            "unreadable_count": 3,
+            "index_ref": "SYNTHETIC-INDEX-001"
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "ai-flag": [
+          {
+            "tracker_ref": "SYNTHETIC-TRACKER-001",
+            "candidate_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              },
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ]
+          }
+        ],
+        "verify-corporate": [
+          {
+            "verified_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              }
+            ],
+            "red_flag_candidates": [],
+            "corrections_made": 1
+          }
+        ],
+        "verify-ip": [
+          {
+            "verified_issues": [
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ],
+            "red_flag_candidates": [
+              "Core brand mark unregistered"
+            ],
+            "corrections_made": 0
+          }
+        ],
+        "run-searches": [
+          {
+            "search_findings": [
+              "SYNTHETIC: ACRA profile matches register; no IPOS filing for core mark; no live suits"
+            ],
+            "search_red_flags": []
+          }
+        ],
+        "assess-red-flags": [
+          {
+            "red_flag_found": false,
+            "red_flag_summary": "SYNTHETIC: no red flag; unregistered mark handled by RFI and completion deliverable."
+          }
+        ],
+        "ai-draft-rfis": [
+          {
+            "draft_rfis": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status"
+            ]
+          }
+        ],
+        "review-rfis": [
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status",
+              "SYNTHETIC RFI 1.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 1 logged"
+          },
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status",
+              "SYNTHETIC RFI 2.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 2 logged"
+          }
+        ],
+        "approve-rfis": [
+          {
+            "approved": false,
+            "comments": "SYNTHETIC: returned: add CoC consent timing"
+          },
+          {
+            "approved": true,
+            "comments": "SYNTHETIC: approved"
+          }
+        ],
+        "release-rfis": [
+          {
+            "qa_reference": "SYNTHETIC-QA-ROUND-1"
+          }
+        ],
+        "await-responses": [
+          {
+            "responses_received": true,
+            "upload_count": 6
+          }
+        ],
+        "ai-ingest-uploads": [
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "verify-updates": [
+          {
+            "further_round_required": false,
+            "stage_summary": "SYNTHETIC: tracker current after round 1; 1 item open for SPA protection."
+          }
+        ],
+        "sign-off": [
+          {
+            "signed_off": true,
+            "reasons": "SYNTHETIC: findings complete for Stage 5."
+          }
+        ]
+      },
+      "expected": {
+        "status": "completed",
+        "business_success": true,
+        "outcome": "findings-handed-to-stage-5"
+      }
+    },
+    {
+      "name": "f-round-cap-exhausted",
+      "outputs": {
+        "allocate": [
+          {
+            "review_areas": [
+              "corporate",
+              "contracts",
+              "employment",
+              "ip-it-pdpa",
+              "property-litigation-licences"
+            ],
+            "ai_scope": "SYNTHETIC: folders 1-7 may be processed; folder 8 (restricted board minutes) stays manual."
+          }
+        ],
+        "clear-ai-use": [
+          {
+            "ai_processing_permitted": true,
+            "basis": "SYNTHETIC: VDR terms permit third-party tools under confidentiality; folder 8 excluded; employee data covered by firm's Legal AI DPA."
+          }
+        ],
+        "load-dataroom": [
+          {
+            "ingestion_ref": "SYNTHETIC-INGEST-001",
+            "playbook_version": "v3"
+          }
+        ],
+        "ai-ingest": [
+          {
+            "document_count": 412,
+            "unreadable_count": 3,
+            "index_ref": "SYNTHETIC-INDEX-001"
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 2.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 3.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "ai-flag": [
+          {
+            "tracker_ref": "SYNTHETIC-TRACKER-001",
+            "candidate_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              },
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ]
+          }
+        ],
+        "verify-corporate": [
+          {
+            "verified_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              }
+            ],
+            "red_flag_candidates": [],
+            "corrections_made": 1
+          }
+        ],
+        "verify-ip": [
+          {
+            "verified_issues": [
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ],
+            "red_flag_candidates": [
+              "Core brand mark unregistered"
+            ],
+            "corrections_made": 0
+          }
+        ],
+        "run-searches": [
+          {
+            "search_findings": [
+              "SYNTHETIC: ACRA profile matches register; no IPOS filing for core mark; no live suits"
+            ],
+            "search_red_flags": []
+          }
+        ],
+        "assess-red-flags": [
+          {
+            "red_flag_found": false,
+            "red_flag_summary": "SYNTHETIC: no red flag; unregistered mark handled by RFI and completion deliverable."
+          }
+        ],
+        "ai-draft-rfis": [
+          {
+            "draft_rfis": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status"
+            ]
+          },
+          {
+            "draft_rfis": [
+              "SYNTHETIC RFI 2.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 2.2: confirm TM filing status"
+            ]
+          },
+          {
+            "draft_rfis": [
+              "SYNTHETIC RFI 3.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 3.2: confirm TM filing status"
+            ]
+          }
+        ],
+        "review-rfis": [
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status",
+              "SYNTHETIC RFI 1.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 1 logged"
+          },
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 2.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 2.2: confirm TM filing status",
+              "SYNTHETIC RFI 2.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 2 logged"
+          },
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 3.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 3.2: confirm TM filing status",
+              "SYNTHETIC RFI 3.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 3 logged"
+          }
+        ],
+        "approve-rfis": [
+          {
+            "approved": true,
+            "comments": "SYNTHETIC: approved round 1"
+          },
+          {
+            "approved": true,
+            "comments": "SYNTHETIC: approved round 2"
+          },
+          {
+            "approved": true,
+            "comments": "SYNTHETIC: approved round 3"
+          }
+        ],
+        "release-rfis": [
+          {
+            "qa_reference": "SYNTHETIC-QA-ROUND-1"
+          },
+          {
+            "qa_reference": "SYNTHETIC-QA-ROUND-2"
+          },
+          {
+            "qa_reference": "SYNTHETIC-QA-ROUND-3"
+          }
+        ],
+        "await-responses": [
+          {
+            "responses_received": true,
+            "upload_count": 6
+          },
+          {
+            "responses_received": true,
+            "upload_count": 6
+          },
+          {
+            "responses_received": true,
+            "upload_count": 6
+          }
+        ],
+        "ai-ingest-uploads": [
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 2.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 3.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "verify-updates": [
+          {
+            "further_round_required": true,
+            "stage_summary": "SYNTHETIC: still open after round 1"
+          },
+          {
+            "further_round_required": true,
+            "stage_summary": "SYNTHETIC: still open after round 2"
+          },
+          {
+            "further_round_required": true,
+            "stage_summary": "SYNTHETIC: still open after round 3"
+          }
+        ]
+      },
+      "expected": {
+        "status": "blocked",
+        "business_success": null
+      }
+    },
+    {
+      "name": "g-target-stalls",
+      "outputs": {
+        "allocate": [
+          {
+            "review_areas": [
+              "corporate",
+              "contracts",
+              "employment",
+              "ip-it-pdpa",
+              "property-litigation-licences"
+            ],
+            "ai_scope": "SYNTHETIC: folders 1-7 may be processed; folder 8 (restricted board minutes) stays manual."
+          }
+        ],
+        "clear-ai-use": [
+          {
+            "ai_processing_permitted": true,
+            "basis": "SYNTHETIC: VDR terms permit third-party tools under confidentiality; folder 8 excluded; employee data covered by firm's Legal AI DPA."
+          }
+        ],
+        "load-dataroom": [
+          {
+            "ingestion_ref": "SYNTHETIC-INGEST-001",
+            "playbook_version": "v3"
+          }
+        ],
+        "ai-ingest": [
+          {
+            "document_count": 412,
+            "unreadable_count": 3,
+            "index_ref": "SYNTHETIC-INDEX-001"
+          }
+        ],
+        "ai-flag": [
+          {
+            "tracker_ref": "SYNTHETIC-TRACKER-001",
+            "candidate_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              },
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ]
+          }
+        ],
+        "verify-corporate": [
+          {
+            "verified_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              }
+            ],
+            "red_flag_candidates": [],
+            "corrections_made": 1
+          }
+        ],
+        "verify-ip": [
+          {
+            "verified_issues": [
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ],
+            "red_flag_candidates": [
+              "Core brand mark unregistered"
+            ],
+            "corrections_made": 0
+          }
+        ],
+        "run-searches": [
+          {
+            "search_findings": [
+              "SYNTHETIC: ACRA profile matches register; no IPOS filing for core mark; no live suits"
+            ],
+            "search_red_flags": []
+          }
+        ],
+        "assess-red-flags": [
+          {
+            "red_flag_found": false,
+            "red_flag_summary": "SYNTHETIC: no red flag; unregistered mark handled by RFI and completion deliverable."
+          }
+        ],
+        "ai-draft-rfis": [
+          {
+            "draft_rfis": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status"
+            ]
+          }
+        ],
+        "review-rfis": [
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status",
+              "SYNTHETIC RFI 1.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 1 logged"
+          }
+        ],
+        "approve-rfis": [
+          {
+            "approved": true,
+            "comments": "SYNTHETIC: approved round 1"
+          }
+        ],
+        "release-rfis": [
+          {
+            "qa_reference": "SYNTHETIC-QA-ROUND-1"
+          }
+        ],
+        "await-responses": [
+          {
+            "responses_received": false,
+            "upload_count": 0
+          }
+        ]
+      },
+      "expected": {
+        "status": "completed",
+        "business_success": false,
+        "outcome": "rfi-responses-outstanding"
+      }
+    },
+    {
+      "name": "h-signoff-withheld",
+      "outputs": {
+        "allocate": [
+          {
+            "review_areas": [
+              "corporate",
+              "contracts",
+              "employment",
+              "ip-it-pdpa",
+              "property-litigation-licences"
+            ],
+            "ai_scope": "SYNTHETIC: folders 1-7 may be processed; folder 8 (restricted board minutes) stays manual."
+          }
+        ],
+        "clear-ai-use": [
+          {
+            "ai_processing_permitted": true,
+            "basis": "SYNTHETIC: VDR terms permit third-party tools under confidentiality; folder 8 excluded; employee data covered by firm's Legal AI DPA."
+          }
+        ],
+        "load-dataroom": [
+          {
+            "ingestion_ref": "SYNTHETIC-INGEST-001",
+            "playbook_version": "v3"
+          }
+        ],
+        "ai-ingest": [
+          {
+            "document_count": 412,
+            "unreadable_count": 3,
+            "index_ref": "SYNTHETIC-INDEX-001"
+          },
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "ai-flag": [
+          {
+            "tracker_ref": "SYNTHETIC-TRACKER-001",
+            "candidate_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              },
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ]
+          }
+        ],
+        "verify-corporate": [
+          {
+            "verified_issues": [
+              {
+                "area": "contracts",
+                "issue": "Change-of-control clause in Customer Agreement 7 (S$1.2m)",
+                "severity": "high",
+                "source_locator": "2/Customer-07.pdf p.14 cl.18.2"
+              },
+              {
+                "area": "employment",
+                "issue": "Two work-pass holders with passes expiring before completion",
+                "severity": "medium",
+                "source_locator": "3/WorkPassList.xlsx rows 4,9"
+              }
+            ],
+            "red_flag_candidates": [],
+            "corrections_made": 1
+          }
+        ],
+        "verify-ip": [
+          {
+            "verified_issues": [
+              {
+                "area": "ip-it-pdpa",
+                "issue": "Core brand mark unregistered in Singapore",
+                "severity": "red-flag",
+                "source_locator": "4/TM-schedule.docx row 1"
+              }
+            ],
+            "red_flag_candidates": [
+              "Core brand mark unregistered"
+            ],
+            "corrections_made": 0
+          }
+        ],
+        "run-searches": [
+          {
+            "search_findings": [
+              "SYNTHETIC: ACRA profile matches register; no IPOS filing for core mark; no live suits"
+            ],
+            "search_red_flags": []
+          }
+        ],
+        "assess-red-flags": [
+          {
+            "red_flag_found": false,
+            "red_flag_summary": "SYNTHETIC: no red flag; unregistered mark handled by RFI and completion deliverable."
+          }
+        ],
+        "ai-draft-rfis": [
+          {
+            "draft_rfis": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status"
+            ]
+          }
+        ],
+        "review-rfis": [
+          {
+            "rfi_list": [
+              "SYNTHETIC RFI 1.1: provide consent position for Customer Agreement 7",
+              "SYNTHETIC RFI 1.2: confirm TM filing status",
+              "SYNTHETIC RFI 1.3: work pass renewals"
+            ],
+            "round_note": "SYNTHETIC: round 1 logged"
+          }
+        ],
+        "approve-rfis": [
+          {
+            "approved": true,
+            "comments": "SYNTHETIC: approved round 1"
+          }
+        ],
+        "release-rfis": [
+          {
+            "qa_reference": "SYNTHETIC-QA-ROUND-1"
+          }
+        ],
+        "await-responses": [
+          {
+            "responses_received": true,
+            "upload_count": 6
+          }
+        ],
+        "ai-ingest-uploads": [
+          {
+            "tracker_delta": [
+              "SYNTHETIC: RFI 1.1 answered; consent letter uploaded"
+            ],
+            "open_items": 1
+          }
+        ],
+        "verify-updates": [
+          {
+            "further_round_required": false,
+            "stage_summary": "SYNTHETIC: tracker current after round 1; 1 item open for SPA protection."
+          }
+        ],
+        "sign-off": [
+          {
+            "signed_off": false,
+            "reasons": "SYNTHETIC: property leases not yet verified."
+          }
+        ]
+      },
+      "expected": {
+        "status": "completed",
+        "business_success": false,
+        "outcome": "signoff-withheld"
+      }
+    },
+    {
+      "name": "i-missing-vdr-capability",
+      "outputs": {},
+      "expected": {
+        "status": "start-refused",
+        "business_success": null
+      },
+      "host": {
+        "host": "test",
+        "code_execution": true,
+        "bindings": []
+      }
+    }
+  ]
+}

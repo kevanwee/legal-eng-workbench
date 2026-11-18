@@ -1,0 +1,3 @@
+SYNTHETIC CONTRACT B
+1. A party may not assign this agreement without prior written consent.
+2. This restriction does not apply to a change of control of either party.

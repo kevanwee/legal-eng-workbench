@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/kevanwee/legal-processmodelling-meta-skill",
+  "revision": "454186472c5d409645168f52098e713abc927e88",
+  "artifact": "artifacts/legal-engineering.pyz",
+  "sha256": "6f37e2984e0349df4c8360291da66a84ef715c82cf30fe6a55d25508167f6804",
+  "license": "MIT",
+  "purpose": "Unmodified native compiler and runner"
+}

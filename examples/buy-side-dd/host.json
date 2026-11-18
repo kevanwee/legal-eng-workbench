@@ -1,0 +1,9 @@
+{
+  "host": "claude-code",
+  "code_execution": true,
+  "bindings": [
+    {"capability": "legal-ai-review", "kind": "tool", "tool": "synthetic.legal-ai-review", "verified": true},
+    {"capability": "tracker-write", "kind": "tool", "tool": "synthetic.tracker-write", "verified": true},
+    {"capability": "vdr-qa-post", "kind": "tool", "tool": "synthetic.vdr-qa-post", "verified": true}
+  ]
+}

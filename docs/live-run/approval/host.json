@@ -1,0 +1,12 @@
+{
+  "host": "codex",
+  "code_execution": true,
+  "bindings": [
+    {
+      "capability": "local-file-access",
+      "kind": "tool",
+      "verified": true,
+      "tool": "functions.exec -> tools.exec_command; actual successful local reads and workspace writes"
+    }
+  ]
+}

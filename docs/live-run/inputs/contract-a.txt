@@ -1,0 +1,3 @@
+SYNTHETIC CONTRACT A
+1. A change in control of the Supplier requires the Customer's prior written consent.
+2. No consent request has been supplied in this extract.

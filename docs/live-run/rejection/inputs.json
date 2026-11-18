@@ -1,0 +1,5 @@
+{
+  "extracts_directory": "<test-workspace>\\ab-fixed\\host\\corpus",
+  "criteria_path": "<test-workspace>\\ab-fixed\\host\\criteria.txt",
+  "output_directory": "<test-workspace>\\ab-fixed\\host\\runs\\rejection"
+}

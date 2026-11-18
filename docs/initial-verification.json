@@ -1,0 +1,144 @@
+{
+  "date": "2026-11-18",
+  "environment": "Windows, Python 3.14",
+  "synthetic": true,
+  "lifecycle_tests": {
+    "run": 8,
+    "passed": 8
+  },
+  "runtime": {
+    "repository": "https://github.com/kevanwee/legal-processmodelling-meta-skill",
+    "revision": "e5456e3b8230c709213ff0799dd423cb21675c13",
+    "artifact": "artifacts/legal-engineering.pyz",
+    "sha256": "51b59673d2db7a08db60e2bc542cb4bb9c450e9aade2c9074323b7ae4e16b7c8",
+    "license": "MIT",
+    "purpose": "Unmodified native compiler and runner"
+  },
+  "cases": [
+    {
+      "name": "a-no-red-flag-one-round",
+      "status": "completed",
+      "business_success": true,
+      "passed": true,
+      "tasks": 17,
+      "outcomes": [
+        {
+          "code": "findings-handed-to-stage-5",
+          "label": "Findings handed to Stage 5",
+          "successful": true
+        }
+      ]
+    },
+    {
+      "name": "b-red-flag-protections-two-rounds",
+      "status": "completed",
+      "business_success": true,
+      "passed": true,
+      "tasks": 25,
+      "outcomes": [
+        {
+          "code": "findings-handed-to-stage-5",
+          "label": "Findings handed to Stage 5",
+          "successful": true
+        }
+      ]
+    },
+    {
+      "name": "c-red-flag-walk-away",
+      "status": "completed",
+      "business_success": false,
+      "passed": true,
+      "tasks": 10,
+      "outcomes": [
+        {
+          "code": "buyer-withdrew",
+          "label": "Buyer withdrew",
+          "successful": false
+        }
+      ]
+    },
+    {
+      "name": "d-ai-not-permitted",
+      "status": "completed",
+      "business_success": false,
+      "passed": true,
+      "tasks": 2,
+      "outcomes": [
+        {
+          "code": "manual-review-required",
+          "label": "Manual review required",
+          "successful": false
+        }
+      ]
+    },
+    {
+      "name": "e-partner-returns-rfis",
+      "status": "completed",
+      "business_success": true,
+      "passed": true,
+      "tasks": 19,
+      "outcomes": [
+        {
+          "code": "findings-handed-to-stage-5",
+          "label": "Findings handed to Stage 5",
+          "successful": true
+        }
+      ]
+    },
+    {
+      "name": "f-round-cap-exhausted",
+      "status": "blocked",
+      "business_success": null,
+      "passed": true,
+      "tasks": 30,
+      "outcomes": []
+    },
+    {
+      "name": "g-target-stalls",
+      "status": "completed",
+      "business_success": false,
+      "passed": true,
+      "tasks": 14,
+      "outcomes": [
+        {
+          "code": "rfi-responses-outstanding",
+          "label": "RFI responses outstanding",
+          "successful": false
+        }
+      ]
+    },
+    {
+      "name": "h-signoff-withheld",
+      "status": "completed",
+      "business_success": false,
+      "passed": true,
+      "tasks": 17,
+      "outcomes": [
+        {
+          "code": "signoff-withheld",
+          "label": "Sign-off withheld",
+          "successful": false
+        }
+      ]
+    },
+    {
+      "name": "i-missing-vdr-capability",
+      "status": "start-refused",
+      "business_success": null,
+      "passed": true,
+      "tasks": 0,
+      "outcomes": []
+    }
+  ],
+  "installation": {
+    "codex": true,
+    "claude-code": true,
+    "installed_runtime_validation": true,
+    "brief_included": true,
+    "transient_windows_lock_retry_tested": true
+  },
+  "wheel_import_outside_checkout": true,
+  "skills_validated": 7,
+  "actual_host_model_execution": false,
+  "limitations": "Native routing executed. Task outputs, legal judgments, human decisions and effects were supplied fixtures."
+}

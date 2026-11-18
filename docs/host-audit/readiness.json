@@ -1,0 +1,21 @@
+{
+  "surface": "Codex CLI 0.153.4",
+  "source_commit": "de3a3237f8b976db84ec84e8a7a37e83c1e04e94",
+  "skill_install": "GitHub skill-installer with git method; global legal-eng-workbench",
+  "discovery": "Observed read of installed SKILL.md",
+  "baseline_commands": [
+    {
+      "command": "python -m workbench --help",
+      "exit_code": 1,
+      "output": "C:\\Python314\\python.exe: No module named workbench"
+    },
+    {
+      "command": "legal-workbench --help",
+      "exit_code": 1,
+      "output": "legal-workbench : The term 'legal-workbench' is not recognized as the name of a cmdlet, function, script file, or "
+    }
+  ],
+  "cli_recovery": "Installed wheel into isolated project venv; help succeeded",
+  "screenshot_type": "Browser-rendered CLI evidence, not native app UI",
+  "raw_transcript_sha256": "a834c0d3ccbf04973bde135705674903ce710cace55d3499f1361559afcac6ea"
+}

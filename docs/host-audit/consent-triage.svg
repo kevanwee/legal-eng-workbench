@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1770 710" role="img">
+<title>Consent triage — to_be</title>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#526574"/></marker></defs>
+<style>text{font-family:Arial,sans-serif;fill:#17313e;font-size:13px}.line{fill:none;stroke:#526574;stroke-width:1.5;marker-end:url(#arrow)}</style>
+<rect width="100%" height="100%" fill="#fafbf8"/><text x="30" y="30" style="font-size:22px">Consent triage · To Be</text>
+<rect x="30" y="60" width="1700" height="370" fill="#edf3f1" stroke="#c3d0cb"/>
+<text x="45" y="120">Associate operating</text>
+<text x="45" y="138">host</text>
+<rect x="30" y="430" width="1700" height="220" fill="#fff" stroke="#c3d0cb"/>
+<text x="45" y="490">Partner</text>
+<polyline class="line" points="404,150.0 429,150.0 429,150.0 455,150.0"/>
+<polyline class="line" points="609,150.0 634,150.0 634,520.0 660,520.0"/>
+<polyline class="line" points="814,520.0 839,520.0 839,520.0 865,520.0"/>
+<polyline class="line" points="1224,150.0 1249,150.0 1249,150.0 1275,150.0"/>
+<polyline class="line" points="1224,300.0 1249,300.0 1249,300.0 1275,300.0"/>
+<polyline class="line" points="1019,520.0 1044,520.0 1044,150.0 1070,150.0"/>
+<polyline class="line" points="1019,520.0 1044,520.0 1044,300.0 1070,300.0"/>
+<rect x="250" y="115" width="154" height="70" rx="8" fill="#fff" stroke="#526574"/>
+<text x="260" y="133">Consent wording review</text>
+<text x="260" y="149">requested</text>
+<text x="253" y="201" style="font-size:10px">start · runner</text>
+<rect x="455" y="115" width="154" height="70" rx="8" fill="#d9e8f4" stroke="#526574"/>
+<text x="465" y="133">Prepare findings and</text>
+<text x="465" y="149">draft internal handoff</text>
+<text x="458" y="201" style="font-size:10px">prepare · agent</text>
+<rect x="660" y="485" width="154" height="70" rx="8" fill="#f5e5c6" stroke="#526574"/>
+<text x="670" y="503">Approve or reject the</text>
+<text x="670" y="519">draft internal handoff</text>
+<text x="663" y="571" style="font-size:10px">review · human</text>
+<rect x="865" y="485" width="154" height="70" rx="8" fill="#fff" stroke="#526574"/>
+<text x="875" y="503">Did the partner</text>
+<text x="875" y="519">approve the internal</text>
+<text x="875" y="535">handoff?</text>
+<text x="868" y="571" style="font-size:10px">gate · runner</text>
+<rect x="1070" y="115" width="154" height="70" rx="8" fill="#d9e8f4" stroke="#526574"/>
+<text x="1080" y="133">Write approved</text>
+<text x="1080" y="149">internal handoff</text>
+<text x="1073" y="201" style="font-size:10px">handoff · agent</text>
+<rect x="1275" y="115" width="154" height="70" rx="8" fill="#fff" stroke="#526574"/>
+<text x="1285" y="133">Internal handoff</text>
+<text x="1285" y="149">recorded</text>
+<text x="1278" y="201" style="font-size:10px">handoff-end · runner</text>
+<rect x="1070" y="265" width="154" height="70" rx="8" fill="#d9e8f4" stroke="#526574"/>
+<text x="1080" y="283">Record rejection and</text>
+<text x="1080" y="299">retain draft</text>
+<text x="1073" y="351" style="font-size:10px">rejection · agent</text>
+<rect x="1275" y="265" width="154" height="70" rx="8" fill="#fff" stroke="#526574"/>
+<text x="1285" y="283">Internal handoff</text>
+<text x="1285" y="299">rejected</text>
+<text x="1278" y="351" style="font-size:10px">rejection-end · runner</text>
+<g data-edge-label="route-handoff" data-label-bounds="792.0,321.0,240,28">
+<rect x="792.0" y="321.0" width="240" height="28" rx="3" fill="#fafbf8"/>
+<text x="800.0" y="338.0" style="font-size:12px">Approved: write internal handoff</text>
+</g>
+<g data-edge-label="route-rejection" data-label-bounds="1056.0,396.0,224.8,28">
+<rect x="1056.0" y="396.0" width="224.8" height="28" rx="3" fill="#fafbf8"/>
+<text x="1064.0" y="413.0" style="font-size:12px">Rejected: no approved handoff</text>
+</g>
+</svg>

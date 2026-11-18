@@ -1,0 +1,5 @@
+# SYNTHETIC consent review brief
+Build a small reusable workflow for triaging change-of-control consent wording in supplied text extracts, against supplied review criteria. No current-law conclusions or external action.
+Roles: associate prepares findings; partner approves or rejects a draft handoff. The host reads the documents, quotes exact clauses, records document and line references, and preserves missing evidence. Final approval may produce an internal handoff; rejection produces no approved handoff.
+Inputs are a directory of three text extracts and the supplied criteria. Outputs are a JSON findings register and a concise Markdown handoff. The model should keep actual text and matter-specific findings outside the skill package.
+The review criteria are textual only: flag express change-of-control consent requirements; flag an express exception separately; do not treat ordinary assignment wording as proof of a change-of-control provision. Missing annexes stay unresolved. Partner review is a human decision; all decisions in this test may be simulated and labelled SYNTHETIC.

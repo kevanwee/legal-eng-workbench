@@ -1,0 +1,1 @@
+{"ok": false, "error": "evidence: 'SYNTHETIC: read every supplied extract and criteria; all exact quotes checked against physical source lines; written register and draft read back and verified.' is not of type 'array'", "type": "WorkflowError"}

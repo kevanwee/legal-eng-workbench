@@ -1,0 +1,9 @@
+Copyright (c) 2026 Kevan Wee. All rights reserved.
+
+No licence is granted to use, copy, modify, merge, publish, distribute,
+sublicense or sell the original workbench code or documentation in this
+repository without the copyright holder's prior written permission.
+
+The bundled process runtime (workbench/resources/runtime.pyz) is a separate
+work licensed under the MIT License; see workbench/resources/RUNTIME-LICENSE
+and workbench/resources/RUNTIME-NOTICES.md for its terms and third-party notices.

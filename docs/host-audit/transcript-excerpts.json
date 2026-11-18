@@ -1,0 +1,57 @@
+[
+  {
+    "source": "readiness-events.jsonl",
+    "kind": "agent_message",
+    "text": "I’m using the installed legal-eng-workbench skill to check discovery and executable availability. I’ll read its SKILL.md, test both help commands from this folder, and write only `readiness.md`."
+  },
+  {
+    "source": "readiness-events.jsonl",
+    "kind": "agent_message",
+    "text": "The installed skill was found and read successfully. Both executable checks failed here: Python cannot find the `workbench` module, and PowerShell cannot resolve `legal-workbench`. I’ll record those results separately from skill discovery in `readiness.md`."
+  },
+  {
+    "source": "readiness-events.jsonl",
+    "kind": "agent_message",
+    "text": "Wrote [readiness.md](<[AUDIT_WORKSPACE]/readiness.md>).\n\nSkill discovery succeeded. Exact file read:\n`[USER_HOME]\\.codex\\skills\\legal-eng-workbench\\SKILL.md`\n\nIts first two workflow instructions are to:\n1. Locate the repository and run the help command; keep projects and matter inputs outside tracked source.\n2. Capture the process brief in `brief.md`, distinguish facts from assumptions, and start with `describe PROJECT --brief BRIEF`.\n\nBoth commands were tested from this folder and failed:\n- `python -m workbench --help`: `No module named workbench`.\n- `legal-workbench --help`: command not recognized.\n\nThe report includes verbatim instructions and results. Only `readiness.md` was written; no installs, unrelated searches, fixture replay, or external work occurred."
+  },
+  {
+    "source": "authoring-events.jsonl",
+    "kind": "agent_message",
+    "text": "I’m using the legal-eng-workbench skill to author, rehearse, release, and install the small consent-triage workflow. I’ll keep the later contract extracts out of the reusable package and label all simulated decisions and rehearsal outputs.\n"
+  },
+  {
+    "source": "authoring-events.jsonl",
+    "kind": "agent_message",
+    "text": "The brief supports a small workflow: prepare findings and a draft, record partner review, then route to either an approved internal handoff or a rejection record. I’ll test both routes plus missing evidence, missing review, and unavailable capabilities; the rehearsals will test routing, not analysis quality.\n"
+  },
+  {
+    "source": "authoring-events.jsonl",
+    "kind": "agent_message",
+    "text": "The model now validates without modelling warnings and builds two generated methods. The first import caught inconsistent ownership between a function package and its methods; I aligned those fields and rebuilt successfully. Next I’ll rehearse the branches and test that a rejected package cannot release.\n"
+  },
+  {
+    "source": "authoring-events.jsonl",
+    "kind": "agent_message",
+    "text": "All four rehearsal cases passed: approval reached the handoff, rejection and missing-annex cases reached rejection, and missing local-file capability prevented startup. The JSON and Markdown rehearsal files are explicitly labelled scripted fixtures. I’ll now record a simulated package rejection, capture the release refusal, then record simulated approval and release the same unchanged candidate.\n"
+  },
+  {
+    "source": "authoring-events.jsonl",
+    "kind": "agent_message",
+    "text": "The rejected candidate correctly refused release. The CLI returned exit code 2; I corrected my test harness’s expectation of 1 and reran the check. Simulated approval then allowed a rehearsal release, and installation into `host-project` succeeded. I also verified the installed package matches the candidate byte for byte.\n"
+  },
+  {
+    "source": "authoring-events.jsonl",
+    "kind": "agent_message",
+    "text": "Completed `consent-triage` 0.1.0: authored, built, rehearsed, released to the rehearsal channel, and installed in `host-project/.agents/skills/consent-triage`.\n\nFour routing cases passed. Rejected review demonstrably blocked release; simulated approval then permitted it. The three deferred extracts remain unread.\n\n[AUTHORING-RESULT.md](<[AUDIT_WORKSPACE]/authoring/AUTHORING-RESULT.md>) records commands, paths, recoveries, evidence, and limits—including the distinction between real authoring and scripted rehearsal outputs."
+  },
+  {
+    "source": "invocation-events.jsonl",
+    "kind": "error",
+    "text": "You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 3:20 PM."
+  },
+  {
+    "source": "invocation-events.jsonl",
+    "kind": "turn.failed",
+    "text": "You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at 3:20 PM."
+  }
+]

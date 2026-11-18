@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" width="1200" role="img" aria-label="Describe, model, reuse or generate, rehearse and review, release, invoke">
+<style>
+text{font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;fill:#1d2733}
+.n{font-size:12px;letter-spacing:.12em;fill:#8a5a2b}
+.t{font-size:19px;font-weight:600}
+.d{font-size:13.5px;fill:#4c5a67}
+.who{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11.5px}
+.arrow{fill:none;stroke:#b9b2a5;stroke-width:1.6;marker-end:url(#a)}
+</style>
+<defs><marker id="a" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="#b9b2a5"/></marker></defs>
+<rect width="1200" height="300" rx="14" fill="#fbfaf7" stroke="#dcd8cf"/>
+
+<g transform="translate(28,40)">
+  <rect width="170" height="196" rx="10" fill="#fff" stroke="#dcd8cf"/>
+  <text x="16" y="30" class="n">01</text><text x="16" y="58" class="t">Describe</text>
+  <text x="16" y="86" class="d">The legal work in</text><text x="16" y="104" class="d">plain language:</text><text x="16" y="122" class="d">roles, inputs,</text><text x="16" y="140" class="d">decisions, outputs.</text>
+  <rect x="16" y="160" width="76" height="22" rx="11" fill="#eef1f6"/><text x="54" y="175" text-anchor="middle" class="who" style="fill:#3c4a6b">you</text>
+</g>
+<path class="arrow" d="M200 138 H214"/>
+<g transform="translate(218,40)">
+  <rect width="170" height="196" rx="10" fill="#fff" stroke="#dcd8cf"/>
+  <text x="16" y="30" class="n">02</text><text x="16" y="58" class="t">Model</text>
+  <text x="16" y="86" class="d">As-Is and To-Be</text><text x="16" y="104" class="d">process with lanes,</text><text x="16" y="122" class="d">gateways and</text><text x="16" y="140" class="d">exceptions.</text>
+  <rect x="16" y="160" width="76" height="22" rx="11" fill="#fde7d9"/><text x="54" y="175" text-anchor="middle" class="who" style="fill:#9a3b12">agent</text>
+</g>
+<path class="arrow" d="M390 138 H404"/>
+<g transform="translate(408,40)">
+  <rect width="170" height="196" rx="10" fill="#fff" stroke="#dcd8cf"/>
+  <text x="16" y="30" class="n">03</text><text x="16" y="58" class="t">Reuse / generate</text>
+  <text x="16" y="86" class="d">Bind an existing</text><text x="16" y="104" class="d">method or write a</text><text x="16" y="122" class="d">new one with exact</text><text x="16" y="140" class="d">I/O contracts.</text>
+  <rect x="16" y="160" width="76" height="22" rx="11" fill="#fde7d9"/><text x="54" y="175" text-anchor="middle" class="who" style="fill:#9a3b12">agent</text>
+</g>
+<path class="arrow" d="M580 138 H594"/>
+<g transform="translate(598,40)">
+  <rect width="170" height="196" rx="10" fill="#fff" stroke="#dcd8cf"/>
+  <text x="16" y="30" class="n">04</text><text x="16" y="58" class="t">Rehearse, review</text>
+  <text x="16" y="86" class="d">Run approval,</text><text x="16" y="104" class="d">rejection and</text><text x="16" y="122" class="d">exception routes.</text><text x="16" y="140" class="d">Rejection blocks.</text>
+  <rect x="16" y="160" width="76" height="22" rx="11" fill="#dcefe4"/><text x="54" y="175" text-anchor="middle" class="who" style="fill:#1d6b43">cli</text>
+  <rect x="98" y="160" width="56" height="22" rx="11" fill="#eef1f6"/><text x="126" y="175" text-anchor="middle" class="who" style="fill:#3c4a6b">you</text>
+</g>
+<path class="arrow" d="M770 138 H784"/>
+<g transform="translate(788,40)">
+  <rect width="170" height="196" rx="10" fill="#fff" stroke="#dcd8cf"/>
+  <text x="16" y="30" class="n">05</text><text x="16" y="58" class="t">Release</text>
+  <text x="16" y="86" class="d">Immutable, hashed</text><text x="16" y="104" class="d">skill folder + ZIP</text><text x="16" y="122" class="d">with its own</text><text x="16" y="140" class="d">pinned runtime.</text>
+  <rect x="16" y="160" width="76" height="22" rx="11" fill="#dcefe4"/><text x="54" y="175" text-anchor="middle" class="who" style="fill:#1d6b43">cli</text>
+</g>
+<path class="arrow" d="M960 138 H974"/>
+<g transform="translate(978,40)">
+  <rect width="194" height="196" rx="10" fill="#1d2733" stroke="#1d2733"/>
+  <text x="16" y="30" class="n" style="fill:#f0b47e">06</text><text x="16" y="58" class="t" style="fill:#fbfaf7">Invoke</text>
+  <text x="16" y="86" class="d" style="fill:#c9d1d9">Use $your-skill in</text><text x="16" y="104" class="d" style="fill:#c9d1d9">Codex or Claude</text><text x="16" y="122" class="d" style="fill:#c9d1d9">Code on real</text><text x="16" y="140" class="d" style="fill:#c9d1d9">matter documents.</text>
+  <rect x="16" y="160" width="96" height="22" rx="11" fill="#3a4654"/><text x="64" y="175" text-anchor="middle" class="who" style="fill:#f0b47e">agent host</text>
+</g>
+<text x="28" y="272" class="d" style="font-size:13px">The agent does the reasoning. The workbench validates, compiles, rehearses and packages, using a pinned process compiler and runner.</text>
+</svg>

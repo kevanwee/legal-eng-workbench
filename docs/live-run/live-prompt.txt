@@ -1,0 +1,7 @@
+Use $consent-triage from this project's installed skills on the matter inputs here: corpus/*.txt and criteria.txt.
+
+First report whether the skill was discovered and the exact installed SKILL.md path. If it cannot be found or read, record the error and stop; do not repair permissions or substitute another copy. Read only the installed package and the matter inputs; do not look in parent directories.
+
+All documents are synthetic. Partner decisions are explicitly authorised simulations: label them SYNTHETIC. Run the workflow twice with separate native run databases: once where the partner approves the internal handoff, once where the partner rejects it. Follow the native runner for task eligibility and status; do not invent run status or outcomes.
+
+Write your work products (findings register, handoff or rejection record) under runs/approval/ and runs/rejection/, outside the installed skill. Then save HOST-INVOCATION-RESULT.md with: discovery result, commands run, final native status and outcomes for each run, artifact paths, and limitations. Do not modify the installed package. No questions are needed.

@@ -1,0 +1,7 @@
+{
+  "matter_ref": "SYNTHETIC buy-side DD package rehearsal",
+  "data_room_index": "SYNTHETIC VDR index: 1 Corporate (constitution, registers, ACRA profile), 2 Material contracts (top 20 customer and supplier agreements), 3 Employment (contracts, CPF, work pass list), 4 IP and IT (trade marks, software licences, PDPA policies), 5 Property (leases), 6 Litigation (letters of demand), 7 Licences. Folder 8 Board minutes is marked restricted.",
+  "review_scope": "Full legal DD on the target and its one subsidiary; exclude tax and financial DD.",
+  "playbook": "SYNTHETIC DD PLAYBOOK v3: flag change-of-control clauses in any contract above S$500k; flag work-pass holders without valid passes; flag unregistered trade marks in core brands; flag leases expiring within 12 months; flag any threatened litigation above S$100k; flag PDPA policies older than 2021.",
+  "vdr_terms": "SYNTHETIC VDR TERMS: bulk download permitted for the buyer's legal advisers; processing by third-party tools permitted where the adviser's tool is contractually bound to confidentiality and data is deleted on completion; folder 8 may not be downloaded."
+}

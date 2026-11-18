@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-18",
+  "question": "Does a package released and installed by a sandboxed agent session remain readable to other host processes?",
+  "method": "Same consent-triage project authored normally with each version; `release` and `install` then run by a `codex exec -s workspace-write` session (Windows restricted-token sandbox identity); readability then checked from the normal user process.",
+  "host": "Codex CLI 0.153.4, Windows 11, Python 3.14.2",
+  "runs": [
+    {
+      "version": "3f3326b (TemporaryDirectory staging)",
+      "sandbox_release_exit": 0,
+      "sandbox_install_exit": 0,
+      "normal_process_read_SKILL_md": "PermissionError: [Errno 13] Permission denied",
+      "icacls_installed_skill": "Access is denied.",
+      "result": "reproduces the earlier audit failure"
+    },
+    {
+      "version": "fixed (staging_directory inherits destination ACL)",
+      "sandbox_release_exit": 0,
+      "sandbox_install_exit": 0,
+      "normal_process_read_SKILL_md": "ok (2470 chars)",
+      "icacls_installed_skill": [
+        "<machine>\\CodexSandboxUsers:(I)(OI)(CI)(M)",
+        "<sandbox-capability-SID>:(I)(OI)(CI)(M)",
+        "NT AUTHORITY\\SYSTEM:(I)(OI)(CI)(F)",
+        "BUILTIN\\Administrators:(I)(OI)(CI)(F)",
+        "<user>:(I)(OI)(CI)(F)"
+      ],
+      "fresh_codex_session_scan_errors": 0,
+      "result": "readable by the normal process and discovered by a fresh Codex session"
+    }
+  ],
+  "root_cause": "tempfile.mkdtemp creates its directory with mode 0o700. On Windows with Python 3.12.4+ that becomes a protected DACL granting only SYSTEM, Administrators and OWNER RIGHTS; inherited grants are dropped. Path.rename keeps that DACL, so the published folder is readable only by the identity that created it. On POSIX the equivalent is a 0700 directory.",
+  "unit_check": "A mkdtemp folder renamed into place showed `SYSTEM:(OI)(CI)(F)`, `Administrators:(OI)(CI)(F)`, `OWNER RIGHTS:(OI)(CI)(F)` with no inherited entries; a sibling plain mkdir inherited the parent's five entries."
+}
