@@ -7,7 +7,7 @@ name = "legal-eng-workbench"
 version = "0.1.0"
 description = "Describe legal work, generate reusable skills, rehearse and release host packages"
 requires-python = ">=3.11"
-license = "LicenseRef-Proprietary"
+license = "MIT"
 dependencies = []
 
 [project.scripts]

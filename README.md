@@ -100,6 +100,4 @@ A reviewed release records who attested to it; it does not certify identity or l
 
 ## License
 
-Copyright © 2026 Kevan Wee. All rights reserved; see [LICENSE](LICENSE). No licence is granted to use, copy, modify or distribute the workbench without written permission.
-
-The bundled runtime ([legal-processmodelling-meta-skill](workbench/resources/runtime.lock.json)) is a separate MIT-licensed work. Its licence and third-party notices are in `workbench/resources/`.
+[MIT](LICENSE). The bundled runtime ([legal-processmodelling-meta-skill](workbench/resources/runtime.lock.json)) is also MIT-licensed. Its licence and third-party notices are in `workbench/resources/`.
